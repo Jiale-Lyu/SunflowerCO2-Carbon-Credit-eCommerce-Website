@@ -20,7 +20,7 @@ const authUser = asyncHandler(async (req, res) => {
       isAdmin: user.isAdmin,
     });
   } else {
-    res.status(401);
+    res.status(401); //unauthorized
     throw new Error('Invalid email or password');
   }
 });
@@ -34,7 +34,7 @@ const registerUser = asyncHandler(async (req, res) => {
   const userExists = await User.findOne({ email });
 
   if (userExists) {
-    res.status(400);
+    res.status(400); //bad request
     throw new Error('User already exists');
   }
 

@@ -32,7 +32,7 @@ userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
-// Encrypt password using bcrypt
+// Encrypt password using bcrypt before saving a document to database
 userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) {
     next();

@@ -19,7 +19,7 @@ router.post('/auth', authUser);
 router.post('/logout', logoutUser);
 router
   .route('/profile')
-  .get(protect, getUserProfile)
+  .get(protect, getUserProfile) //protect middleware is going to run whenever we hit this route
   .put(protect, updateUserProfile);
 router
   .route('/:id')
