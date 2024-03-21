@@ -4,9 +4,11 @@ import multer from 'multer';
 
 const router = express.Router();
 
+// Amazon S3 bucket is a public cloud storage resource available in AWS
+// or just store on the server - diskStorage
 const storage = multer.diskStorage({
   destination(req, file, cb) {
-    cb(null, 'uploads/');
+    cb(null, 'uploads/'); //stores in uploads/  folder under root dir
   },
   filename(req, file, cb) {
     cb(

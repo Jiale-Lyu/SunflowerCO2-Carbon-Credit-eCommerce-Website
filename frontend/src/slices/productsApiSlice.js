@@ -30,7 +30,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
         method: 'PUT',
         body: data,
       }),
-      invalidatesTags: ['Products'],
+      invalidatesTags: ['Products'], //get rid of any cached products
     }),
     uploadProductImage: builder.mutation({
       query: (data) => ({
