@@ -1,21 +1,22 @@
-import { Row, Col } from 'react-bootstrap';
+// import { Row, Col } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
-import { useGetProductsQuery } from '../slices/productsApiSlice';
+// import { useGetProductsQuery } from '../slices/productsApiSlice';
 import { Link } from 'react-router-dom';
-import Product from '../components/Product';
-import Loader from '../components/Loader';
-import Message from '../components/Message';
-import Paginate from '../components/Paginate';
+// import Product from '../components/Product';
+// import Loader from '../components/Loader';
+// import Message from '../components/Message';
+// import Paginate from '../components/Paginate';
 import ProductCarousel from '../components/ProductCarousel';
-import Meta from '../components/Meta';
+// import Meta from '../components/Meta';
 
 const HomeScreen = () => {
-  const { pageNumber, keyword } = useParams();
+  const { keyword } = useParams();
+  // const { pageNumber, keyword } = useParams();
 
-  const { data, isLoading, error } = useGetProductsQuery({
-    keyword,
-    pageNumber,
-  });
+  // const { data, isLoading, error } = useGetProductsQuery({
+  //   keyword,
+  //   pageNumber,
+  // });
 
   return (
     <>
@@ -26,7 +27,7 @@ const HomeScreen = () => {
           Go Back
         </Link>
       )}
-      {isLoading ? (
+      {/* {isLoading ? (
         <Loader />
       ) : error ? (
         <Message variant='danger'>
@@ -49,7 +50,7 @@ const HomeScreen = () => {
             keyword={keyword ? keyword : ''}
           />
         </>
-      )}
+      )} */}
     </>
   );
 };

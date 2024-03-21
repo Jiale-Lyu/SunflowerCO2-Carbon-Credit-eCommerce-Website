@@ -45,10 +45,10 @@ const Header = () => {
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ms-auto'>
               {/* <SearchBox /> */}
-              <LinkContainer to='/cart'>
+              <LinkContainer to='/product'>
                 <Nav.Link>Product</Nav.Link>
               </LinkContainer>
-              <LinkContainer to='/cart'>
+              <LinkContainer to='/'>
                 <Nav.Link>Carbon Calculator</Nav.Link>
               </LinkContainer>
 
