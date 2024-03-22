@@ -4014,7 +4014,10 @@ fieldset:disabled .btn {
 .tab-content > .active {
   display: block;
 }
-
+.navbar-brand-img {
+  width: 30px;
+  margin-right: 3px;
+}
 .navbar {
   --bs-navbar-padding-x: 0;
   --bs-navbar-padding-y: 0.84rem;

@@ -111,29 +111,54 @@ const OrderScreen = () => {
       <Row>
         <Col md={8}>
           <ListGroup variant='flush'>
-            <ListGroup.Item>
-              <h2>Shipping</h2>
-              <p>
-                <strong>Name: </strong> {order.user.name}
-              </p>
-              <p>
-                <strong>Email: </strong>{' '}
-                <a href={`mailto:${order.user.email}`}>{order.user.email}</a>
-              </p>
-              <p>
-                <strong>Address:</strong>
-                {order.shippingAddress.address}, {order.shippingAddress.city}{' '}
-                {order.shippingAddress.postalCode},{' '}
-                {order.shippingAddress.country}
-              </p>
-              {order.isDelivered ? (
-                <Message variant='success'>
-                  Delivered on {order.deliveredAt}
-                </Message>
-              ) : (
-                <Message variant='danger'>Not Delivered</Message>
-              )}
-            </ListGroup.Item>
+            {!order.orderItems[0].name.includes('Certificate') ? (
+              <ListGroup.Item>
+                <h2>Shipping</h2>
+                <p>
+                  <strong>Name: </strong> {order.user.name}
+                </p>
+                <p>
+                  <strong>Email: </strong>{' '}
+                  <a href={`mailto:${order.user.email}`}>{order.user.email}</a>
+                </p>
+                <p>
+                  <strong>Address: </strong>
+                  {order.shippingAddress.address}, {order.shippingAddress.city}{' '}
+                  {order.shippingAddress.postalCode},{' '}
+                  {order.shippingAddress.country}
+                </p>
+                {order.isDelivered ? (
+                  <Message variant='success'>
+                    Delivered on {order.deliveredAt}
+                  </Message>
+                ) : (
+                  <Message variant='danger'>Not Delivered</Message>
+                )}
+              </ListGroup.Item>
+            ) : order.isPaid ? (
+              <ListGroup.Item>
+                <h2>Certification</h2>
+                <p>
+                  <strong>Name: </strong> {order.user.name}
+                </p>
+                <p>
+                  <strong>Email: </strong>{' '}
+                  <a href={`mailto:${order.user.email}`}>{order.user.email}</a>
+                </p>
+                <p>
+                  <strong>Certificate: </strong>{' '}
+                  <a
+                    target='_blank'
+                    href='../images/Carbon Offset Certification.pdf'
+                  >
+                    Carbon Offset Certification.pdf
+                  </a>
+                </p>
+                <Message variant='success'>Certification Generated</Message>
+              </ListGroup.Item>
+            ) : (
+              <></>
+            )}
 
             <ListGroup.Item>
               <h2>Payment Method</h2>

@@ -37,7 +37,7 @@ const Header = () => {
         <Container>
           <LinkContainer to='/'>
             <Navbar.Brand>
-              <img src={logo} alt='CarbonFar' />
+              <img src={logo} alt='CarbonFar' className='navbar-brand-img' />
               CarbonFar
             </Navbar.Brand>
           </LinkContainer>
@@ -51,17 +51,10 @@ const Header = () => {
               <LinkContainer to='/'>
                 <Nav.Link>Carbon Calculator</Nav.Link>
               </LinkContainer>
+              {/* <LinkContainer to='/faq'>
+                <Nav.Link>FAQ</Nav.Link>
+              </LinkContainer> */}
 
-              <LinkContainer to='/cart'>
-                <Nav.Link>
-                  <FaShoppingCart /> Cart
-                  {cartItems.length > 0 && (
-                    <Badge pill bg='success' style={{ marginLeft: '5px' }}>
-                      {cartItems.reduce((a, c) => a + c.qty, 0)}
-                    </Badge>
-                  )}
-                </Nav.Link>
-              </LinkContainer>
               {userInfo ? (
                 <>
                   <NavDropdown title={userInfo.name} id='username'>
@@ -95,6 +88,16 @@ const Header = () => {
                   </LinkContainer>
                 </NavDropdown>
               )}
+              <LinkContainer to='/cart'>
+                <Nav.Link>
+                  <FaShoppingCart /> Cart
+                  {cartItems.length > 0 && (
+                    <Badge pill bg='success' style={{ marginLeft: '5px' }}>
+                      {cartItems.reduce((a, c) => a + c.qty, 0)}
+                    </Badge>
+                  )}
+                </Nav.Link>
+              </LinkContainer>
             </Nav>
           </Navbar.Collapse>
         </Container>
