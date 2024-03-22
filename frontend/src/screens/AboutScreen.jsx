@@ -1,60 +1,14 @@
+import React from 'react';
 import { Row, Col } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
-// import { useGetProductsQuery } from '../slices/productsApiSlice';
-import { Link } from 'react-router-dom';
-// import Product from '../components/Product';
-// import Loader from '../components/Loader';
-// import Message from '../components/Message';
-// import Paginate from '../components/Paginate';
-import ProductCarousel from '../components/ProductCarousel';
-// import Meta from '../components/Meta';
 
-const HomeScreen = () => {
-  const { keyword } = useParams();
-  // const { pageNumber, keyword } = useParams();
-
-  // const { data, isLoading, error } = useGetProductsQuery({
-  //   keyword,
-  //   pageNumber,
-  // });
-
+const AboutScreen = () => {
   return (
-    <>
-      {!keyword ? (
-        <ProductCarousel />
-      ) : (
-        <Link to='/' className='btn btn-light mb-4'>
-          Go Back
-        </Link>
-      )}
-      {/* {isLoading ? (
-        <Loader />
-      ) : error ? (
-        <Message variant='danger'>
-          {error?.data?.message || error.error}
-        </Message>
-      ) : (
-        <>
-          <Meta />
-          <h1>Latest Products</h1>
-          <Row>
-            {data.products.map((product) => (
-              <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-                <Product product={product} />
-              </Col>
-            ))}
-          </Row>
-          <Paginate
-            pages={data.pages}
-            page={data.page}
-            keyword={keyword ? keyword : ''}
-          />
-        </>
-      )} */}
+    <div>
+      <h1>About Us</h1>
       <br />
       <br />
       <br />
-      <h1>Our Commitment</h1>
+      <h3>Our Commitment</h3>
       <p>
         We believe that every action, no matter how small, can make a
         significant difference in combating climate change. That's why we've
@@ -70,7 +24,7 @@ const HomeScreen = () => {
 
       <Row>
         <Col md={7}>
-          <h1>Why Carbon Offset?</h1>
+          <h3>Why Carbon Offset?</h3>
           <p>
             Carbon offsetting is a crucial strategy in the fight against climate
             change. By investing in projects that reduce or capture greenhouse
@@ -97,7 +51,7 @@ const HomeScreen = () => {
       <br />
       <br />
       <br />
-      <h1>Our Approach</h1>
+      <h3>Our Approach</h3>
       <p>
         At Carbon Far, we are committed to transparency, integrity, and
         effectiveness in everything we do. We carefully vet and select carbon
@@ -110,8 +64,18 @@ const HomeScreen = () => {
       <br />
       <br />
       <br />
-    </>
+      <h3>Contact Information</h3>
+      <p>
+        <b>Email:</b> support@carbonfar.com
+      </p>
+      <p>
+        <b>Location:</b> 1 Main St, San Jose, CA 95131
+      </p>
+      <p>
+        <b>Phone:</b> 888-888-8888
+      </p>
+    </div>
   );
 };
 
-export default HomeScreen;
+export default AboutScreen;

@@ -48,13 +48,18 @@ const Header = () => {
               <LinkContainer to='/product'>
                 <Nav.Link>Product</Nav.Link>
               </LinkContainer>
-              <LinkContainer to='/'>
+              <LinkContainer to='/calculator'>
                 <Nav.Link>Carbon Calculator</Nav.Link>
               </LinkContainer>
-              {/* <LinkContainer to='/faq'>
-                <Nav.Link>FAQ</Nav.Link>
-              </LinkContainer> */}
-
+              <LinkContainer to='/faq'>
+                <Nav.Link>FAQs</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to='/news'>
+                <Nav.Link>News</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to='/about'>
+                <Nav.Link>About</Nav.Link>
+              </LinkContainer>
               {userInfo ? (
                 <>
                   <NavDropdown title={userInfo.name} id='username'>

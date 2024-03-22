@@ -31,17 +31,17 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a href='/product' className='px-2'>
-                Pricing
+              <a href='/calculator' className='px-2'>
+                Calculator
               </a>
             </li>
             <li>
-              <a href='/' className='px-2'>
+              <a href='/faq' className='px-2'>
                 FAQs
               </a>
             </li>
             <li>
-              <a href='/' className='px-2'>
+              <a href='/about' className='px-2'>
                 About
               </a>
             </li>
