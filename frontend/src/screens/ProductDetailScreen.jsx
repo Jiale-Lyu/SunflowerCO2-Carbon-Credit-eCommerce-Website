@@ -47,7 +47,7 @@ const ProductDetailScreen = () => {
   // const { userInfo } = useSelector((state) => state.auth);
 
   // const [createReview, { isLoading: loadingProductReview }] =
-    useCreateReviewMutation();
+  useCreateReviewMutation();
 
   // const submitHandler = async (e) => {
   //   e.preventDefault();
