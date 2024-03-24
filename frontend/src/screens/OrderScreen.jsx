@@ -4,6 +4,8 @@ import { Row, Col, ListGroup, Image, Card, Button } from 'react-bootstrap';
 import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import { FacebookShareButton } from 'react-share';
+import { FaFacebook } from 'react-icons/fa';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 import {
@@ -153,6 +155,14 @@ const OrderScreen = () => {
                   >
                     Carbon Offset Certification.pdf
                   </a>
+                  <FacebookShareButton
+                    url='https://sunflowerco2.com'
+                    hashtag='#carbon_credit'
+                  >
+                    <div className='facebook'>
+                      <FaFacebook />
+                    </div>
+                  </FacebookShareButton>
                 </p>
                 <Message variant='success'>Certification Generated</Message>
               </ListGroup.Item>

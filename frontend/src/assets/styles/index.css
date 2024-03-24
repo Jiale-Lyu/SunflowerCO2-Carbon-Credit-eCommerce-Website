@@ -69,3 +69,10 @@ footer a:hover {
 .faq {
   margin: 80px 0;
 }
+
+.facebook svg {
+  color: #0866ff;
+  margin-left: 5px;
+  width: 20px;
+  height: 20px;
+}

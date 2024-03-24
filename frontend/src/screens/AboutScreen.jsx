@@ -66,13 +66,14 @@ const AboutScreen = () => {
       <br />
       <h3>Contact Information</h3>
       <p>
-        <b>Email:</b> support@carbonfar.com
+        <b>Email: </b>
+        <a href='mailto:support@carbonfar.com'>support@carbonfar.com</a>
       </p>
       <p>
-        <b>Location:</b> 1 Main St, San Jose, CA 95131
+        <b>Location: </b> 1 Main St, San Jose, CA 95131
       </p>
       <p>
-        <b>Phone:</b> 888-888-8888
+        <b>Phone: </b> 888-888-8888
       </p>
     </div>
   );

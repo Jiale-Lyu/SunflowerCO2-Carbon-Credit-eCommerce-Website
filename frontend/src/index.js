@@ -20,7 +20,6 @@ import ProductScreen from './screens/ProductScreen';
 import CartScreen from './screens/CartScreen';
 import FAQScreen from './screens/FAQScreen';
 import NewsScreen from './screens/NewsScreen';
-import CalculatorScreen from './screens/CalculatorScreen';
 import AboutScreen from './screens/AboutScreen';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
@@ -52,7 +51,6 @@ const router = createBrowserRouter(
       <Route path='/product' element={<ProductScreen />} />
       <Route path='/cart' element={<CartScreen />} />
       <Route path='/faq' element={<FAQScreen />} />
-      <Route path='/calculator' element={<CalculatorScreen />} />
       <Route path='/news' element={<NewsScreen />} />
       <Route path='/about' element={<AboutScreen />} />
       <Route path='/login' element={<LoginScreen />} />

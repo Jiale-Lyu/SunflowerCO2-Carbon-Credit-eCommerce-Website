@@ -31,11 +31,6 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a href='/calculator' className='px-2'>
-                Calculator
-              </a>
-            </li>
-            <li>
               <a href='/faq' className='px-2'>
                 FAQs
               </a>

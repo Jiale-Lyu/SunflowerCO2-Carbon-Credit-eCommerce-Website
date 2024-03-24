@@ -48,9 +48,6 @@ const Header = () => {
               <LinkContainer to='/product'>
                 <Nav.Link>Product</Nav.Link>
               </LinkContainer>
-              <LinkContainer to='/calculator'>
-                <Nav.Link>Carbon Calculator</Nav.Link>
-              </LinkContainer>
               <LinkContainer to='/faq'>
                 <Nav.Link>FAQs</Nav.Link>
               </LinkContainer>
