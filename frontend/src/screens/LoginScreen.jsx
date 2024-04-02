@@ -26,6 +26,7 @@ const LoginScreen = () => {
 
   useEffect(() => {
     if (userInfo) {
+      //already signed in
       navigate(redirect);
     }
   }, [navigate, redirect, userInfo]);
@@ -33,8 +34,8 @@ const LoginScreen = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await login({ email, password }).unwrap();
-      dispatch(setCredentials({ ...res }));
+      const res = await login({ email, password }).unwrap(); //unwrap the resolved value from promise
+      dispatch(setCredentials({ ...res })); //store user info to local storage
       navigate(redirect);
     } catch (err) {
       toast.error(err?.data?.message || err.error);
@@ -55,7 +56,6 @@ const LoginScreen = () => {
             onChange={(e) => setEmail(e.target.value)}
           ></Form.Control>
         </Form.Group>
-
         <Form.Group className='my-2' controlId='password'>
           <Form.Label>Password</Form.Label>
           <Form.Control
@@ -64,12 +64,27 @@ const LoginScreen = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           ></Form.Control>
+          <Form.Text className='text-muted '>
+            <div className='d-flex justify-content-end'>
+              <Link
+                to={
+                  redirect
+                    ? `/forgotpassword?redirect=${redirect}`
+                    : '/forgotpassword'
+                }
+              >
+                Forgot password?
+              </Link>
+            </div>
+          </Form.Text>
         </Form.Group>
+        {/* <Form.Group className='mb-3' id='formGridCheckbox'>
+          <Form.Check type='checkbox' label='Remember me' />
+        </Form.Group> */}
 
         <Button disabled={isLoading} type='submit' variant='primary'>
           Sign In
         </Button>
-
         {isLoading && <Loader />}
       </Form>
 

@@ -1,6 +1,9 @@
 import express from 'express';
 import {
   authUser,
+  forgotPassword,
+  resetPassword,
+  getResetPasswordPage,
   registerUser,
   logoutUser,
   getUserProfile,
@@ -26,5 +29,10 @@ router
   .delete(protect, admin, deleteUser)
   .get(protect, admin, getUserById)
   .put(protect, admin, updateUser);
+router.route('/forgotpassword').post(forgotPassword);
+router
+  .route('/resetpassword/:id/:token')
+  .get(getResetPasswordPage)
+  .post(resetPassword);
 
 export default router;

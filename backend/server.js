@@ -16,8 +16,11 @@ connectDB();
 
 const app = express();
 
+// Body parser middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Cookie parser middleware
 app.use(cookieParser());
 
 app.use('/api/products', productRoutes);

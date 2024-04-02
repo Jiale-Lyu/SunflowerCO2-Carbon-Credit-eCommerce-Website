@@ -14,7 +14,7 @@ import {
 // import { toast } from 'react-toastify';
 import {
   useGetProductDetailsQuery,
-  useCreateReviewMutation,
+  // useCreateReviewMutation,
 } from '../slices/productsApiSlice';
 // import Rating from '../components/Rating';
 import Loader from '../components/Loader';
@@ -47,7 +47,7 @@ const ProductDetailScreen = () => {
   // const { userInfo } = useSelector((state) => state.auth);
 
   // const [createReview, { isLoading: loadingProductReview }] =
-  useCreateReviewMutation();
+  // useCreateReviewMutation();
 
   // const submitHandler = async (e) => {
   //   e.preventDefault();

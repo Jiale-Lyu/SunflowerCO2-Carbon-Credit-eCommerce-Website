@@ -10,6 +10,26 @@ export const userApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    forgotPassword: builder.mutation({
+      query: (data) => ({
+        url: `${USERS_URL}/forgotpassword`,
+        method: 'POST',
+        body: data,
+      }),
+    }),
+    getResetPasswordPage: builder.query({
+      query: ({ id, token }) => ({
+        url: `${USERS_URL}/resetpassword/${id}/${token}`,
+        method: 'GET',
+      }),
+    }),
+    resetPassword: builder.mutation({
+      query: ({ id, token, password }) => ({
+        url: `${USERS_URL}/resetpassword/${id}/${token}`,
+        method: 'POST',
+        body: { password },
+      }),
+    }),
     register: builder.mutation({
       query: (data) => ({
         url: `${USERS_URL}`,
@@ -62,6 +82,9 @@ export const userApiSlice = apiSlice.injectEndpoints({
 
 export const {
   useLoginMutation,
+  useForgotPasswordMutation,
+  useGetResetPasswordPageQuery,
+  useResetPasswordMutation,
   useLogoutMutation,
   useRegisterMutation,
   useProfileMutation,

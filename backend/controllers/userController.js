@@ -1,6 +1,10 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import generateToken from '../utils/generateToken.js';
+import jwt from 'jsonwebtoken';
+import sendEmail from '../utils/sendEmail.js';
 import User from '../models/userModel.js';
+import dotenv from 'dotenv';
+dotenv.config();
 
 // @desc    Auth user & get token
 // @route   POST /api/users/auth
@@ -22,6 +26,83 @@ const authUser = asyncHandler(async (req, res) => {
   } else {
     res.status(401); //unauthorized
     throw new Error('Invalid email or password');
+  }
+});
+
+// @desc    Forgot Password
+// @route   POST /api/users/forgotpassword
+// @access  Public
+const forgotPassword = asyncHandler(async (req, res) => {
+  const { email } = req.body;
+  const user = await User.findOne({ email });
+
+  if (user) {
+    try {
+      const result = await sendEmail(user);
+      console.log('Email sent...', result);
+      res.status(200).json({ message: 'Email sent successfully' });
+    } catch (error) {
+      console.error('Error sending email:', error);
+      res.status(500).json({ error: 'Failed to send email' });
+    }
+  } else {
+    res.status(404); //not found
+    throw new Error('User not found!');
+  }
+});
+
+// @desc    Render password reset page
+// @route   GET /api/users/resetpassword/:id/:token
+// @access  Public
+const getResetPasswordPage = asyncHandler(async (req, res) => {
+  const { id, token } = req.params;
+  const user = await User.findById(id);
+
+  if (!user) {
+    res.status(404).json({ error: 'User not found' });
+    return;
+  }
+  // If the link is used to reset password, secret won't be the same
+  // The second time verification will fail
+  const secret = process.env.JWT_SECRET + user.password;
+
+  try {
+    jwt.verify(token, secret);
+    res.status(200).json({ message: 'Valid link' });
+  } catch (error) {
+    // If token is invalid, send an error
+    res.status(400).json({ error: 'Invalid or expired token' });
+  }
+});
+
+// @desc    Reset Password
+// @route   POST /api/users/resetpassword/:id/:token
+// @access  Public
+const resetPassword = asyncHandler(async (req, res) => {
+  const { id, token } = req.params;
+  const { password } = req.body;
+
+  const user = await User.findById({ _id: id });
+
+  if (user) {
+    //verify one-time link
+    const secret = process.env.JWT_SECRET + user.password;
+
+    try {
+      jwt.verify(token, secret);
+      if (password) {
+        user.password = password;
+      }
+      await user.save();
+
+      res.status(200).json({ message: 'Password reset successfully!' });
+    } catch (error) {
+      console.log(error);
+      res.json({ status: 'Something Went Wrong' });
+    }
+  } else {
+    res.status(404);
+    throw new Error('User not found');
   }
 });
 
@@ -89,6 +170,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
 // @desc    Update user profile
 // @route   PUT /api/users/profile
 // @access  Private
+// no need to pass in _id,  encoded in json webtoken
 const updateUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
 
@@ -181,6 +263,9 @@ const updateUser = asyncHandler(async (req, res) => {
 
 export {
   authUser,
+  forgotPassword,
+  getResetPasswordPage,
+  resetPassword,
   registerUser,
   logoutUser,
   getUserProfile,
