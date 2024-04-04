@@ -51,9 +51,9 @@ const Header = () => {
               <LinkContainer to='/faq'>
                 <Nav.Link>FAQs</Nav.Link>
               </LinkContainer>
-              <LinkContainer to='/news'>
+              {/* <LinkContainer to='/news'>
                 <Nav.Link>News</Nav.Link>
-              </LinkContainer>
+              </LinkContainer> */}
               <LinkContainer to='/about'>
                 <Nav.Link>About</Nav.Link>
               </LinkContainer>
