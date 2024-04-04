@@ -67,7 +67,7 @@ const AboutScreen = () => {
       <h3>Contact Information</h3>
       <p>
         <b>Email: </b>
-        <a href='mailto:support@carbonfar.com'>support@carbonfar.com</a>
+        <a href='mailto:support@SunflowerCO2.com'>support@SunflowerCO2.com</a>
       </p>
       <p>
         <b>Location: </b> 1 Main St, San Jose, CA 95131

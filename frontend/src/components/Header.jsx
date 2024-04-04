@@ -37,8 +37,8 @@ const Header = () => {
         <Container>
           <LinkContainer to='/'>
             <Navbar.Brand>
-              <img src={logo} alt='CarbonFar' className='navbar-brand-img' />
-              CarbonFar
+              <img src={logo} alt='SunflowerCO2' className='navbar-brand-img' />
+              SunflowerCO2
             </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
