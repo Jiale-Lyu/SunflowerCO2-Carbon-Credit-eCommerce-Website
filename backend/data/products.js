@@ -18,7 +18,7 @@ const products = [
       'Embrace sustainability and contribute to a greener planet with the GreenGuard Carbon Offset Card. Designed with the eco-conscious individual in mind, this card represents your commitment to reducing your carbon footprint. Each card represents a tangible step towards combating climate change, by funding projects that reduce greenhouse gas emissions.',
     brand: 'CarbonFar',
     category: 'Card',
-    price: 29.99,
+    price: 20,
     countInStock: 10,
     rating: 4.5,
     numReviews: 12,

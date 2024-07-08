@@ -26,13 +26,13 @@ const App = () => {
   return (
     <>
       <ToastContainer />
-      <Header />
-      <main className='py-3'>
+      <main>
+        <Header />
         <Container>
           <Outlet />
         </Container>
+        <Footer />
       </main>
-      <Footer />
     </>
   );
 };

@@ -1,5 +1,29 @@
+/* Ensure the HTML and body take up the full height */
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+/* Make the root element a flex container */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Make the main element flexible to take up available space */
 main {
-  min-height: 80vh;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-image: url('../../../public/images/landing.JPG');
+  background-size: cover; /* Ensures the image covers the whole area */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+}
+/* Container should also be flexible to fill the available space */
+.container {
+  flex: 1; /* Take up all available space within main */
 }
 
 .rating span {
@@ -54,11 +78,11 @@ table th {
 
 footer {
   background-color: #3c4d5d;
-  color: white;
+  color: #345645;
   text-align: center;
 }
 footer a {
-  color: rgb(123 138 139 / 75%);
+  color: #345645;
   padding: 10px, 20px;
   text-decoration: none;
 }
@@ -75,4 +99,57 @@ footer a:hover {
   margin-left: 5px;
   width: 20px;
   height: 20px;
+}
+.custom-navbar,
+.custom-footer {
+  background-color: transparent !important;
+  /* background-color: #97bd55 !important; */
+}
+/* .custom-navbar .navbar-brand,
+.custom-navbar .navbar-nav .nav-link {
+  color: black !important;
+} */
+
+.faq {
+  text-align: center;
+}
+.faq-title {
+  font-weight: bold;
+}
+.faq-list {
+  width: 70%;
+  margin: auto;
+  text-align: left;
+}
+.landing-pic {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  border-radius: 25px;
+}
+.home-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+}
+.home-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  text-align: center; /* Optional: center text inside the div */
+  height: 70vh;
+  min-width: 320px; /* Set a minimum width */
+  width: 45%;
+  padding: 20px; /* Optional: add some padding */
+}
+.home-content h1 {
+  color: #345645;
+  text-transform: uppercase; /* Convert text to uppercase */
+  text-align: center; /* Center align the text */
+  line-height: 1.5; /* Adjust line height for better spacing */
+}
+.bold-text {
+  font-weight: bold; /* Make the text bold */
 }

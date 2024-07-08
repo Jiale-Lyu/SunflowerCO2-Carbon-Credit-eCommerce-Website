@@ -4,48 +4,30 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer>
-      {/* <div className='footer-link'>
-        <a href='https://www.linkedin.com/'>LinkedIn</a>
-        <a href='https://twitter.com/'>Twitter</a>
-        <a href='https://www.appbrewery.co/'>Website</a>
-      </div> */}
-      {/* <Container>
-        <Row>
-          <Col className='text-center py-3'>
-            <p>SunflowerCO2 &copy; {currentYear}</p>
-          </Col>
-        </Row>
-      </Container> */}
-      <div className='container'>
-        <footer className='py-3'>
-          <ul className='nav justify-content-center pb-3 mb-3'>
-            <li>
-              <a href='/' className='px-2'>
-                Home
-              </a>
-            </li>
-            <li>
-              <a href='/product' className='px-2'>
-                Product
-              </a>
-            </li>
-            <li>
-              <a href='/faq' className='px-2'>
-                FAQs
-              </a>
-            </li>
-            <li>
-              <a href='/about' className='px-2'>
-                About
-              </a>
-            </li>
-          </ul>
-          <p className='text-center text-body-secondary'>
-            SunflowerCO2 &copy; {currentYear}
-          </p>
-        </footer>
-      </div>
+    <footer className='py-3 custom-footer'>
+      <ul className='nav justify-content-center border-bottom pb-3 mb-3'>
+        <li className='nav-item'>
+          <a href='/' className='nav-link px-2'>
+            Home
+          </a>
+        </li>
+        <li className='nav-item'>
+          <a href='/product' className='nav-link px-2'>
+            Pricing
+          </a>
+        </li>
+        <li className='nav-item'>
+          <a href='/faq' className='nav-link px-2'>
+            FAQs
+          </a>
+        </li>
+        <li className='nav-item'>
+          <a href='/about' className='nav-link px-2'>
+            About
+          </a>
+        </li>
+      </ul>
+      <p className='text-center'>© {currentYear} Carbonfar LLC</p>
     </footer>
   );
 };
