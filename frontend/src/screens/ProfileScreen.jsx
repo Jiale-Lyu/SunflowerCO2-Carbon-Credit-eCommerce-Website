@@ -1,25 +1,91 @@
 import React, { useEffect, useState } from 'react';
-import { Table, Form, Button, Row, Col } from 'react-bootstrap';
+import { Table, Form, Button, Row, Col, Modal } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { FaTimes } from 'react-icons/fa';
-
 import { toast } from 'react-toastify';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 import { useProfileMutation } from '../slices/usersApiSlice';
 import { useGetMyOrdersQuery } from '../slices/ordersApiSlice';
-import { setCredentials } from '../slices/authSlice';
+import { useGetMyClaimedCreditsQuery } from '../slices/creditsApiSlice';
+
+const states = [
+  { label: 'Alabama', value: 'AL' },
+  { label: 'Alaska', value: 'AK' },
+  { label: 'Arizona', value: 'AZ' },
+  { label: 'Arkansas', value: 'AR' },
+  { label: 'California', value: 'CA' },
+  { label: 'Colorado', value: 'CO' },
+  { label: 'Connecticut', value: 'CT' },
+  { label: 'Delaware', value: 'DE' },
+  { label: 'Florida', value: 'FL' },
+  { label: 'Georgia', value: 'GA' },
+  { label: 'Hawaii', value: 'HI' },
+  { label: 'Idaho', value: 'ID' },
+  { label: 'Illinois', value: 'IL' },
+  { label: 'Indiana', value: 'IN' },
+  { label: 'Iowa', value: 'IA' },
+  { label: 'Kansas', value: 'KS' },
+  { label: 'Kentucky', value: 'KY' },
+  { label: 'Louisiana', value: 'LA' },
+  { label: 'Maine', value: 'ME' },
+  { label: 'Maryland', value: 'MD' },
+  { label: 'Massachusetts', value: 'MA' },
+  { label: 'Michigan', value: 'MI' },
+  { label: 'Minnesota', value: 'MN' },
+  { label: 'Mississippi', value: 'MS' },
+  { label: 'Missouri', value: 'MO' },
+  { label: 'Montana', value: 'MT' },
+  { label: 'Nebraska', value: 'NE' },
+  { label: 'Nevada', value: 'NV' },
+  { label: 'New Hampshire', value: 'NH' },
+  { label: 'New Jersey', value: 'NJ' },
+  { label: 'New Mexico', value: 'NM' },
+  { label: 'New York', value: 'NY' },
+  { label: 'North Carolina', value: 'NC' },
+  { label: 'North Dakota', value: 'ND' },
+  { label: 'Ohio', value: 'OH' },
+  { label: 'Oklahoma', value: 'OK' },
+  { label: 'Oregon', value: 'OR' },
+  { label: 'Pennsylvania', value: 'PA' },
+  { label: 'Rhode Island', value: 'RI' },
+  { label: 'South Carolina', value: 'SC' },
+  { label: 'South Dakota', value: 'SD' },
+  { label: 'Tennessee', value: 'TN' },
+  { label: 'Texas', value: 'TX' },
+  { label: 'Utah', value: 'UT' },
+  { label: 'Vermont', value: 'VT' },
+  { label: 'Virginia', value: 'VA' },
+  { label: 'Washington', value: 'WA' },
+  { label: 'West Virginia', value: 'WV' },
+  { label: 'Wisconsin', value: 'WI' },
+  { label: 'Wyoming', value: 'WY' },
+];
 
 const ProfileScreen = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [displayName, setDisplayName] = useState('');
+  const [state, setState] = useState('');
+  const [showcaseCredits, setShowcaseCredits] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [stateError, setStateError] = useState(false);
 
   const { userInfo } = useSelector((state) => state.auth);
 
-  const { data: orders, isLoading, error } = useGetMyOrdersQuery();
+  const {
+    data: orders,
+    isLoading: loadingOrders,
+    error: errorOrders,
+  } = useGetMyOrdersQuery();
+  const {
+    data: credits,
+    isLoading: loadingCredits,
+    error: errorCredits,
+  } = useGetMyClaimedCreditsQuery();
 
   const [updateProfile, { isLoading: loadingUpdateProfile }] =
     useProfileMutation();
@@ -27,24 +93,25 @@ const ProfileScreen = () => {
   useEffect(() => {
     setName(userInfo.name);
     setEmail(userInfo.email);
-  }, [userInfo.email, userInfo.name]);
+    setDisplayName(userInfo.username); // Default to username
+    setState(userInfo.state || '');
+    setShowcaseCredits(userInfo.showcaseCredits || false);
+  }, [userInfo]);
 
-  const dispatch = useDispatch();
   const submitHandler = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
       toast.error('Passwords do not match');
     } else {
       try {
-        const res = await updateProfile({
-          // NOTE: here we don't need the _id in the request payload as this is
-          // not used in our controller.
-          // _id: userInfo._id,
+        await updateProfile({
           name,
           email,
           password,
+          displayName,
+          state,
+          showcaseCredits,
         }).unwrap();
-        dispatch(setCredentials({ ...res }));
         toast.success('Profile updated successfully');
       } catch (err) {
         toast.error(err?.data?.message || err.error);
@@ -52,11 +119,33 @@ const ProfileScreen = () => {
     }
   };
 
+  const handleShowcaseSubmit = async (e) => {
+    e.preventDefault();
+    if (!state) {
+      setStateError(true);
+      return;
+    }
+    setStateError(false);
+    try {
+      await updateProfile({
+        displayName,
+        state,
+        showcaseCredits: true,
+      }).unwrap();
+      toast.success('Showcase updated successfully');
+      setShowModal(false);
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
+    }
+  };
+
+  // Calculate total claimed credits
+  const totalClaimedCredits = credits ? credits.totalCredits : 0;
+
   return (
-    <Row>
+    <Row className='profile-body'>
       <Col md={3}>
         <h2>User Profile</h2>
-
         <Form onSubmit={submitHandler}>
           <Form.Group className='my-2' controlId='name'>
             <Form.Label>Name</Form.Label>
@@ -106,11 +195,11 @@ const ProfileScreen = () => {
       </Col>
       <Col md={9}>
         <h2>My Orders</h2>
-        {isLoading ? (
+        {loadingOrders ? (
           <Loader />
-        ) : error ? (
+        ) : errorOrders ? (
           <Message variant='danger'>
-            {error?.data?.message || error.error}
+            {errorOrders?.data?.message || errorOrders.error}
           </Message>
         ) : (
           <Table striped hover responsive className='table-sm'>
@@ -156,7 +245,95 @@ const ProfileScreen = () => {
             </tbody>
           </Table>
         )}
-        <h2>My Claimed Carbon Offsets</h2>
+        <br />
+        <br />
+        <br />
+
+        <h2>
+          You have Registered {totalClaimedCredits} Tons of Carbon Offsets
+        </h2>
+
+        {loadingCredits ? (
+          <Loader />
+        ) : errorCredits ? (
+          <Message variant='danger'>
+            {errorCredits?.data?.message || errorCredits.error}
+          </Message>
+        ) : (
+          <>
+            {totalClaimedCredits > 0 && (
+              <Table striped hover responsive className='table-sm'>
+                <thead>
+                  <tr>
+                    <th>CODE</th>
+                    <th>CLAIM DATE</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {credits.credits.map((credit) => (
+                    <tr key={credit._id}>
+                      <td>{credit.code}</td>
+                      <td>{credit.createdAt.substring(0, 10)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            )}
+            {totalClaimedCredits > 0 && (
+              <Button
+                variant='primary'
+                className='profile-showcase-button'
+                onClick={() => setShowModal(true)}
+              >
+                Showcase My Contribution
+              </Button>
+            )}
+          </>
+        )}
+
+        <Modal show={showModal} onHide={() => setShowModal(false)}>
+          <Modal.Header closeButton>
+            <Modal.Title>Showcase Your Contribution</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form onSubmit={handleShowcaseSubmit}>
+              <Form.Group className='my-2' controlId='displayName'>
+                <Form.Label>Display Name</Form.Label>
+                <Form.Control
+                  type='text'
+                  placeholder='Enter display name'
+                  value={displayName}
+                  onChange={(e) => setDisplayName(e.target.value)}
+                ></Form.Control>
+              </Form.Group>
+
+              <Form.Group className='my-2' controlId='state'>
+                <Form.Label>State</Form.Label>
+                <Form.Control
+                  as='select'
+                  value={state}
+                  onChange={(e) => setState(e.target.value)}
+                >
+                  <option value=''>Select state</option>
+                  {states.map((state) => (
+                    <option key={state.value} value={state.value}>
+                      {state.label}
+                    </option>
+                  ))}
+                </Form.Control>
+                {stateError && (
+                  <div style={{ color: 'red', marginTop: '5px' }}>
+                    Please select your state to present
+                  </div>
+                )}
+              </Form.Group>
+
+              <Button type='submit' variant='primary'>
+                Save
+              </Button>
+            </Form>
+          </Modal.Body>
+        </Modal>
       </Col>
     </Row>
   );

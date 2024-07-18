@@ -200,3 +200,11 @@ footer a:hover {
   /* width: 100%;  */
   /* Optional: Make the button take the full width */
 }
+.profile-showcase-button {
+  margin: auto;
+  display: flex;
+}
+.profile-body {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 20px;
+}

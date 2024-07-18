@@ -1,17 +1,17 @@
-import { Row, Col, Image, Button } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
+// import { useParams } from 'react-router-dom';
 // import { useGetProductsQuery } from '../slices/productsApiSlice';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 // import Product from '../components/Product';
 // import Loader from '../components/Loader';
 // import Message from '../components/Message';
 // import Paginate from '../components/Paginate';
-import ProductCarousel from '../components/ProductCarousel';
+// import ProductCarousel from '../components/ProductCarousel';
 // import Meta from '../components/Meta';
 
 const HomeScreen = () => {
-  const { keyword } = useParams();
+  // const { keyword } = useParams();
   const navigate = useNavigate();
   // const { pageNumber, keyword } = useParams();
 
@@ -20,7 +20,7 @@ const HomeScreen = () => {
   //   pageNumber,
   // });
   const handlePurchaseClick = () => {
-    navigate('/product/668c2b2e880a302ac079bc78');
+    navigate('/product/669917ff27f5323535ba5430');
   };
   const handleClaimClick = () => {
     navigate('/claim');

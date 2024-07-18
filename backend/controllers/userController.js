@@ -181,6 +181,9 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     if (req.body.password) {
       user.password = req.body.password;
     }
+    user.displayName = req.body.displayName || user.displayName;
+    user.state = req.body.state || user.state;
+    user.showcaseCredits = req.body.showcaseCredits ?? user.showcaseCredits;
 
     const updatedUser = await user.save();
 
@@ -189,6 +192,9 @@ const updateUserProfile = asyncHandler(async (req, res) => {
       name: updatedUser.name,
       email: updatedUser.email,
       isAdmin: updatedUser.isAdmin,
+      displayName: updatedUser.displayName,
+      state: updatedUser.state,
+      showcaseCredits: updatedUser.showcaseCredits,
     });
   } else {
     res.status(404);

@@ -21,6 +21,20 @@ const userSchema = mongoose.Schema(
       required: true,
       default: false,
     },
+    displayName: {
+      type: String,
+    },
+    state: {
+      type: String,
+    },
+    showcaseCredits: {
+      type: Boolean,
+      default: false,
+    },
+    claimedCredits: {
+      type: Number,
+      default: 0,
+    },
   },
   {
     timestamps: true,

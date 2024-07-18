@@ -1,25 +1,40 @@
-import { Table, Button } from 'react-bootstrap';
+import React from 'react';
+import { Table } from 'react-bootstrap';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 import { useGetOrdersQuery } from '../slices/ordersApiSlice';
+import { useGetUsersQuery } from '../slices/usersApiSlice'; // Assuming you have this hook
 
 const AwardScreen = () => {
-  const { data: orders, isLoading, error } = useGetOrdersQuery();
+  const {
+    data: orders,
+    isLoading: loadingOrders,
+    error: errorOrders,
+  } = useGetOrdersQuery();
+  const {
+    data: users,
+    isLoading: loadingUsers,
+    error: errorUsers,
+  } = useGetUsersQuery();
+
+  // Filter and sort users by claimedCredits
+  const showcasingUsers = users
+    ?.filter((user) => user.showcaseCredits)
+    .sort((a, b) => b.claimedCredits - a.claimedCredits);
 
   return (
     <div className='award-container'>
-      <h1>Most Rencent Buyer</h1>
-      {isLoading ? (
+      <h1>Most Recent Buyer</h1>
+      {loadingOrders ? (
         <Loader />
-      ) : error ? (
+      ) : errorOrders ? (
         <Message variant='danger'>
-          {error?.data?.message || error.error}
+          {errorOrders?.data?.message || errorOrders.error}
         </Message>
       ) : (
         <Table striped bordered hover responsive className='table-sm'>
           <thead>
             <tr>
-              {/* <th>ID</th> */}
               <th>USER</th>
               <th>TONs</th>
               <th>ADDRESS</th>
@@ -32,9 +47,10 @@ const AwardScreen = () => {
               .reverse()
               .map((order) => (
                 <tr key={order._id}>
-                  {/* <td>{order._id}</td> */}
                   <td>{order.user && order.user.name}</td>
-                  <td>{order.orderItems[0].qty}</td>
+                  <td>
+                    {order.orderItems.reduce((acc, item) => acc + item.qty, 0)}
+                  </td>
                   <td>{order.shippingAddress.state}</td>
                   <td>{order.createdAt.substring(0, 10)}</td>
                 </tr>
@@ -44,31 +60,27 @@ const AwardScreen = () => {
       )}
 
       <h1>Most Carbon Credit Claimer</h1>
-      {isLoading ? (
+      {loadingUsers ? (
         <Loader />
-      ) : error ? (
+      ) : errorUsers ? (
         <Message variant='danger'>
-          {error?.data?.message || error.error}
+          {errorUsers?.data?.message || errorUsers.error}
         </Message>
       ) : (
         <Table striped bordered hover responsive className='table-sm'>
           <thead>
             <tr>
-              {/* <th>ID</th> */}
               <th>USER</th>
               <th>TONs</th>
-              <th>ADDRESS</th>
-              <th>DATE</th>
+              <th>STATE</th>
             </tr>
           </thead>
           <tbody>
-            {orders.map((order) => (
-              <tr key={order._id}>
-                {/* <td>{order._id}</td> */}
-                <td>{order.user && order.user.name}</td>
-                <td>{order.orderItems[0].qty}</td>
-                <td>{order.shippingAddress.state}</td>
-                <td>{order.createdAt.substring(0, 10)}</td>
+            {showcasingUsers.map((user, index) => (
+              <tr key={index}>
+                <td>{user.displayName || user.name}</td>
+                <td>{user.claimedCredits}</td>
+                <td>{user.state}</td>
               </tr>
             ))}
           </tbody>
