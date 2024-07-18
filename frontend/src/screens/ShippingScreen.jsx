@@ -12,17 +12,74 @@ const ShippingScreen = () => {
 
   const [address, setAddress] = useState(shippingAddress.address || '');
   const [city, setCity] = useState(shippingAddress.city || '');
+  const [state, setState] = useState(shippingAddress.state || '');
   const [postalCode, setPostalCode] = useState(
     shippingAddress.postalCode || ''
   );
-  const [country, setCountry] = useState(shippingAddress.country || '');
+  // const [country, setCountry] = useState(shippingAddress.country || '');
+
+  const US_STATES = [
+    'AL',
+    'AK',
+    'AZ',
+    'AR',
+    'CA',
+    'CO',
+    'CT',
+    'DE',
+    'FL',
+    'GA',
+    'HI',
+    'ID',
+    'IL',
+    'IN',
+    'IA',
+    'KS',
+    'KY',
+    'LA',
+    'ME',
+    'MD',
+    'MA',
+    'MI',
+    'MN',
+    'MS',
+    'MO',
+    'MT',
+    'NE',
+    'NV',
+    'NH',
+    'NJ',
+    'NM',
+    'NY',
+    'NC',
+    'ND',
+    'OH',
+    'OK',
+    'OR',
+    'PA',
+    'RI',
+    'SC',
+    'SD',
+    'TN',
+    'TX',
+    'UT',
+    'VT',
+    'VA',
+    'WA',
+    'WV',
+    'WI',
+    'WY',
+  ];
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(saveShippingAddress({ address, city, postalCode, country }));
+    const country = 'United States'; // Set the country to United States by default
+    dispatch(
+      saveShippingAddress({ address, city, state, postalCode, country })
+    );
     navigate('/payment');
   };
 
@@ -53,6 +110,23 @@ const ShippingScreen = () => {
           ></Form.Control>
         </Form.Group>
 
+        <Form.Group controlId='state'>
+          <Form.Label>State</Form.Label>
+          <Form.Control
+            as='select'
+            value={state}
+            onChange={(e) => setState(e.target.value)}
+            required
+          >
+            <option value=''>Select State</option>
+            {US_STATES.map((state) => (
+              <option key={state} value={state}>
+                {state}
+              </option>
+            ))}
+          </Form.Control>
+        </Form.Group>
+
         <Form.Group className='my-2' controlId='postalCode'>
           <Form.Label>Postal Code</Form.Label>
           <Form.Control
@@ -64,7 +138,7 @@ const ShippingScreen = () => {
           ></Form.Control>
         </Form.Group>
 
-        <Form.Group className='my-2' controlId='country'>
+        {/* <Form.Group className='my-2' controlId='country'>
           <Form.Label>Country</Form.Label>
           <Form.Control
             type='text'
@@ -73,7 +147,7 @@ const ShippingScreen = () => {
             required
             onChange={(e) => setCountry(e.target.value)}
           ></Form.Control>
-        </Form.Group>
+        </Form.Group> */}
 
         <Button type='submit' variant='primary'>
           Continue

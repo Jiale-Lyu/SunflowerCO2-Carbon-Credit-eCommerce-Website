@@ -156,6 +156,7 @@ const ProfileScreen = () => {
             </tbody>
           </Table>
         )}
+        <h2>My Claimed Carbon Offsets</h2>
       </Col>
     </Row>
   );

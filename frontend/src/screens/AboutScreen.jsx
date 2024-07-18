@@ -3,7 +3,7 @@ import { Row, Col } from 'react-bootstrap';
 
 const AboutScreen = () => {
   return (
-    <div>
+    <div className='about-container'>
       <h1>About Us</h1>
       <br />
       <br />
@@ -45,7 +45,7 @@ const AboutScreen = () => {
           </p>
         </Col>
         <Col md={5}>
-          <img src='../images/homeimg.jpg' alt='env_image' />
+          <img src='../images/aboutimg.jpg' alt='env_image' />
         </Col>
       </Row>
       <br />
@@ -67,13 +67,12 @@ const AboutScreen = () => {
       <h3>Contact Information</h3>
       <p>
         <b>Email: </b>
-        <a href='mailto:support@SunflowerCO2.com'>support@SunflowerCO2.com</a>
+        <a href='mailto:sunflowerco2info@gmail.com'>
+          sunflowerco2info@gmail.com
+        </a>
       </p>
       <p>
-        <b>Location: </b> 1 Main St, San Jose, CA 95131
-      </p>
-      <p>
-        <b>Phone: </b> 888-888-8888
+        <b>Location: </b> Boston, MA
       </p>
     </div>
   );

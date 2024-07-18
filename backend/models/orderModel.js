@@ -1,7 +1,13 @@
 import mongoose from 'mongoose';
+import { nanoid } from 'nanoid';
 
 const orderSchema = mongoose.Schema(
   {
+    _id: {
+      type: String,
+      default: () => nanoid(10), // Generates a 8-character unique ID
+    },
+
     user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
@@ -23,6 +29,7 @@ const orderSchema = mongoose.Schema(
     shippingAddress: {
       address: { type: String, required: true },
       city: { type: String, required: true },
+      state: { type: String, required: true },
       postalCode: { type: String, required: true },
       country: { type: String, required: true },
     },

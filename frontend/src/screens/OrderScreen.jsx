@@ -125,7 +125,8 @@ const OrderScreen = () => {
                 </p>
                 <p>
                   <strong>Address: </strong>
-                  {order.shippingAddress.address}, {order.shippingAddress.city}{' '}
+                  {order.shippingAddress.address} {order.shippingAddress.city},{' '}
+                  {order.shippingAddress.state}{' '}
                   {order.shippingAddress.postalCode},{' '}
                   {order.shippingAddress.country}
                 </p>

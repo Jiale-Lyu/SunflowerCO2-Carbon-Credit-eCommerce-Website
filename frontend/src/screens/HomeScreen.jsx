@@ -19,8 +19,11 @@ const HomeScreen = () => {
   //   keyword,
   //   pageNumber,
   // });
-  const handleClick = () => {
-    navigate('/product');
+  const handlePurchaseClick = () => {
+    navigate('/product/668c2b2e880a302ac079bc78');
+  };
+  const handleClaimClick = () => {
+    navigate('/claim');
   };
 
   return (
@@ -39,9 +42,14 @@ const HomeScreen = () => {
           contributions help build a sustainable future. Join us in making a
           positive impact on the environment.
         </p>
-        <Button variant='primary' onClick={handleClick}>
-          Purchase
-        </Button>
+        <div className='button-group'>
+          <Button variant='primary' onClick={handlePurchaseClick}>
+            Purchase
+          </Button>
+          <Button variant='primary' onClick={handleClaimClick}>
+            Credit Offset Registration
+          </Button>
+        </div>
       </div>
     </div>
   );

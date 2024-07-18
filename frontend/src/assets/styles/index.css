@@ -153,3 +153,50 @@ footer a:hover {
 .bold-text {
   font-weight: bold; /* Make the text bold */
 }
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+.award-container {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+}
+
+.about-container {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 20px;
+}
+.claim-container {
+  display: flex;
+  flex-direction: column; /* To stack the children vertically */
+  align-items: center; /* To center the children horizontally */
+  justify-content: center; /* To center the children vertically */
+  height: 80vh;
+  /* To make the container take the full height of the viewport */
+  padding: 20px; /* Optional: Add some padding */
+}
+.claim-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  height: 80%;
+  /* padding: 20px; */
+  margin-top: 10%;
+}
+.claim-form .form-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.claim-form .form-control {
+  width: 200px;
+  margin: auto;
+}
+.claim-form button {
+  margin-top: 20px; /* Add space between the input box and button */
+  /* width: 100%;  */
+  /* Optional: Make the button take the full width */
+}

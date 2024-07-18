@@ -51,8 +51,18 @@ const Header = () => {
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ms-auto'>
               {/* <SearchBox /> */}
-              <LinkContainer to='/product'>
-                <Nav.Link>Product</Nav.Link>
+              <LinkContainer to='/'>
+                <Nav.Link>Home</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to='/about'>
+                <Nav.Link>Learn</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to='/award'>
+                <Nav.Link>Leadership Award</Nav.Link>
+              </LinkContainer>
+              {/* only one product at the beginning */}
+              <LinkContainer to='/product/668c2b2e880a302ac079bc78'>
+                <Nav.Link>Purchase</Nav.Link>
               </LinkContainer>
               <LinkContainer to='/faq'>
                 <Nav.Link>FAQs</Nav.Link>
@@ -60,9 +70,6 @@ const Header = () => {
               {/* <LinkContainer to='/news'>
                 <Nav.Link>News</Nav.Link>
               </LinkContainer> */}
-              <LinkContainer to='/about'>
-                <Nav.Link>About</Nav.Link>
-              </LinkContainer>
               {userInfo ? (
                 <>
                   <NavDropdown title={userInfo.name} id='username'>

@@ -21,6 +21,8 @@ import CartScreen from './screens/CartScreen';
 import FAQScreen from './screens/FAQScreen';
 import NewsScreen from './screens/NewsScreen';
 import AboutScreen from './screens/AboutScreen';
+import AwardScreen from './screens/AwardScreen';
+import ClaimScreen from './screens/ClaimScreen';
 import LoginScreen from './screens/LoginScreen';
 import ForgotPasswordScreen from './screens/ForgotPasswordScreen';
 import ResetPasswordScreen from './screens/ResetPasswordScreen';
@@ -55,6 +57,8 @@ const router = createBrowserRouter(
       <Route path='/faq' element={<FAQScreen />} />
       <Route path='/news' element={<NewsScreen />} />
       <Route path='/about' element={<AboutScreen />} />
+      <Route path='/award' element={<AwardScreen />} />
+      <Route path='/claim' element={<ClaimScreen />} />
       <Route path='/login' element={<LoginScreen />} />
       <Route path='/forgotpassword' element={<ForgotPasswordScreen />} />
       <Route
