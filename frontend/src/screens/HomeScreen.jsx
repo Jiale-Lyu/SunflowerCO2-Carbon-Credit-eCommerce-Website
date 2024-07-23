@@ -36,18 +36,16 @@ const HomeScreen = () => {
         </h1>
 
         <p>
-          Welcome to our platform, your destination for purchasing carbon
-          offsets. Take meaningful action to combat climate change by offsetting
-          your carbon footprint. Our easy and transparent process ensures your
-          contributions help build a sustainable future. Join us in making a
-          positive impact on the environment.
+          Welcome to SunflowerCO2, your destination for purchasing carbon
+          offsets. Join us in combating climate change and offset your past,
+          current, or future carbon footprint today!
         </p>
         <div className='button-group'>
           <Button variant='primary' onClick={handlePurchaseClick}>
             Purchase
           </Button>
           <Button variant='primary' onClick={handleClaimClick}>
-            Credit Offset Registration
+            Register Credit Offset
           </Button>
         </div>
       </div>

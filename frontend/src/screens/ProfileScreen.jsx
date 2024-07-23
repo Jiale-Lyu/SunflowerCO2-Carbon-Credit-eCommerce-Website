@@ -250,7 +250,8 @@ const ProfileScreen = () => {
         <br />
 
         <h2>
-          You have Registered {totalClaimedCredits} Tons of Carbon Offsets
+          You have Registered {totalClaimedCredits} TONS of CARBON OFFSETS in
+          total
         </h2>
 
         {loadingCredits ? (
@@ -273,7 +274,7 @@ const ProfileScreen = () => {
                   {credits.credits.map((credit) => (
                     <tr key={credit._id}>
                       <td>{credit.code}</td>
-                      <td>{credit.createdAt.substring(0, 10)}</td>
+                      <td>{credit.updatedAt.substring(0, 10)}</td>
                     </tr>
                   ))}
                 </tbody>

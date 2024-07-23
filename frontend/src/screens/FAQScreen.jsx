@@ -39,10 +39,14 @@ const FAQScreen = () => {
             How do I calculate my carbon footprint?
           </Accordion.Header>
           <Accordion.Body>
-            You can calculate your carbon footprint using our carbon calculator
-            tool on the website. Simply input information about your lifestyle,
-            travel, and energy usage, and the calculator will estimate your
-            carbon emissions.
+            You can estimate your carbon footprint here:&nbsp;
+            <a
+              href='https://coolclimate.org/calculator'
+              target='_blank'
+              rel='noreferrer'
+            >
+              https://coolclimate.org/calculator
+            </a>
           </Accordion.Body>
         </Accordion.Item>
         <Accordion.Item eventKey='4'>
@@ -69,9 +73,9 @@ const FAQScreen = () => {
             Can individuals buy carbon credits?
           </Accordion.Header>
           <Accordion.Body>
-            Yes, individuals can purchase carbon credits to offset their
-            personal carbon footprint. This can include emissions from travel,
-            home energy use, and other activities.
+            Yes! Individuals can purchase carbon credits to offset their
+            personal carbon footprint. Simply create an account with
+            SunflowerCO2 and purchase carbon credits!
           </Accordion.Body>
         </Accordion.Item>
         <Accordion.Item eventKey='7'>
@@ -101,9 +105,8 @@ const FAQScreen = () => {
             How can I ensure the carbon credits I purchase are legitimate?
           </Accordion.Header>
           <Accordion.Body>
-            To ensure legitimacy, purchase carbon credits that are certified by
-            reputable standards such as the Verified Carbon Standard (VCS) or
-            Gold Standard, and check for third-party verification.
+            SunflowerCO2 purchases large carbon credit contracts that are
+            varified by VERRA.
           </Accordion.Body>
         </Accordion.Item>
       </Accordion>
