@@ -1,16 +1,17 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
 import Message from '../components/Message';
+import { Link } from 'react-router-dom';
 import Loader from '../components/Loader';
-import { useGetOrdersQuery } from '../slices/ordersApiSlice';
+import { useGetCreditsQuery } from '../slices/creditsApiSlice'; // Assuming you have this hook
 import { useGetUsersQuery } from '../slices/usersApiSlice'; // Assuming you have this hook
 
 const AwardScreen = () => {
   const {
-    data: orders,
-    isLoading: loadingOrders,
-    error: errorOrders,
-  } = useGetOrdersQuery();
+    data: credits,
+    isLoading: loadingCredits,
+    error: errorCredits,
+  } = useGetCreditsQuery();
   const {
     data: users,
     isLoading: loadingUsers,
@@ -20,72 +21,101 @@ const AwardScreen = () => {
   // Filter and sort users by claimedCredits
   const showcasingUsers = users
     ?.filter((user) => user.showcaseCredits)
-    .sort((a, b) => b.claimedCredits - a.claimedCredits);
+    .sort((a, b) => b.claimedCredits - a.claimedCredits)
+    .slice(0, 10); // Limit to top 10 users
+
+  // Sort credits by update time (most recent first) and filter by claimed
+  const recentClaimers = credits
+    ?.filter((credit) => credit.isClaimed)
+    .sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt))
+    .map((credit) => ({
+      username: credit.user
+        ? credit.user.displayName || credit.user.name
+        : 'Unknown',
+      state: credit.user ? credit.user.state : 'Unknown',
+      time: new Date(credit.updatedAt).toLocaleDateString(),
+    }));
 
   return (
     <div className='award-container'>
-      <h1>Most Recent Buyer</h1>
-      {loadingOrders ? (
-        <Loader />
-      ) : errorOrders ? (
-        <Message variant='danger'>
-          {errorOrders?.data?.message || errorOrders.error}
-        </Message>
-      ) : (
-        <Table striped bordered hover responsive className='table-sm'>
-          <thead>
-            <tr>
-              <th>USER</th>
-              <th>TONs</th>
-              <th>ADDRESS</th>
-              <th>DATE</th>
-            </tr>
-          </thead>
-          <tbody>
-            {orders
-              .slice()
-              .reverse()
-              .map((order) => (
-                <tr key={order._id}>
-                  <td>{order.user && order.user.name}</td>
-                  <td>
-                    {order.orderItems.reduce((acc, item) => acc + item.qty, 0)}
-                  </td>
-                  <td>{order.shippingAddress.state}</td>
-                  <td>{order.createdAt.substring(0, 10)}</td>
+      <h1>Leaderboard</h1>
+      <p>
+        To show your claimed credit in Leaderboard, choose to showcase my
+        contribution in <Link to='/profile'>your profile</Link>
+      </p>
+      <div className='table-container'>
+        <div className='table-wrapper'>
+          <h3>Most Recent Claimers</h3>
+          {loadingCredits || loadingUsers ? (
+            <Loader />
+          ) : errorCredits || errorUsers ? (
+            <Message variant='danger'>
+              {errorCredits?.data?.message ||
+                errorCredits.error ||
+                errorUsers?.data?.message ||
+                errorUsers.error}
+            </Message>
+          ) : (
+            <Table striped bordered hover responsive className='table-sm'>
+              <thead>
+                <tr>
+                  <th>USER</th>
+                  <th>TONs</th>
+                  <th>STATE</th>
+                  <th>DATE</th>
                 </tr>
-              ))}
-          </tbody>
-        </Table>
-      )}
+              </thead>
+              <tbody>
+                {recentClaimers.map((claimer, index) => (
+                  <tr key={index}>
+                    <td>{claimer.username}</td>
+                    <td>1</td>
+                    <td>{claimer.state}</td>
+                    <td>{claimer.time}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          )}
+        </div>
 
-      <h1>Most Carbon Credit Claimer</h1>
-      {loadingUsers ? (
-        <Loader />
-      ) : errorUsers ? (
-        <Message variant='danger'>
-          {errorUsers?.data?.message || errorUsers.error}
-        </Message>
-      ) : (
-        <Table striped bordered hover responsive className='table-sm'>
-          <thead>
-            <tr>
-              <th>USER</th>
-              <th>TONs</th>
-              <th>STATE</th>
-            </tr>
-          </thead>
-          <tbody>
-            {showcasingUsers.map((user, index) => (
-              <tr key={index}>
-                <td>{user.displayName || user.name}</td>
-                <td>{user.claimedCredits}</td>
-                <td>{user.state}</td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-      )}
+        <div className='table-wrapper'>
+          <h3>Top 10 Carbon Credit Claimers</h3>
+          {loadingUsers ? (
+            <Loader />
+          ) : errorUsers ? (
+            <Message variant='danger'>
+              {errorUsers?.data?.message || errorUsers.error}
+            </Message>
+          ) : (
+            <Table striped bordered hover responsive className='table-sm'>
+              <thead>
+                <tr>
+                  <th>RANK</th>
+                  <th>USER</th>
+                  <th>TONs</th>
+                  <th>STATE</th>
+                </tr>
+              </thead>
+              <tbody>
+                {showcasingUsers.map((user, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>{user.displayName || user.name}</td>
+                    <td>{user.claimedCredits}</td>
+                    <td>{user.state}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          )}
+        </div>
+      </div>
+      {/* <p>
+        To show your claimed credit in Leaderboard, go to{' '}
+        <Link to='/profile'>your profile</Link> and choose to showcase my
+        contribution
+      </p> */}
     </div>
   );
 };

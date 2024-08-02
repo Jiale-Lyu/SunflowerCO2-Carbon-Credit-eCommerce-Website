@@ -157,10 +157,6 @@ footer a:hover {
   display: flex;
   gap: 10px;
 }
-.award-container {
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 20px;
-}
 
 .about-container {
   background-color: rgba(255, 255, 255, 0.7);
@@ -207,4 +203,55 @@ footer a:hover {
 .profile-body {
   background-color: rgba(255, 255, 255, 0.7);
   padding: 20px;
+}
+
+.award-container {
+  /* background-color: rgba(255, 255, 255, 0.8); */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
+
+.table-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px; /* Adjust as needed */
+}
+
+.table-wrapper {
+  width: 48%;
+  max-height: 600px; /* Set the desired height */
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #fdfbdc;
+}
+
+.table-wrapper h3 {
+  text-align: center;
+}
+
+.table-wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table-wrapper table th,
+.table-wrapper table td {
+  border-top: 2px solid #ccc; /* Top border */
+  border-bottom: 2px solid #ccc; /* Bottom border */
+  border-left: none; /* Remove left border */
+  border-right: none; /* Remove right border */
+  padding: 8px;
+}
+
+.table-wrapper table tbody tr:nth-child(odd) {
+  background-color: #ecf0c5; /* Light gray for odd rows */
+}
+
+.table-wrapper table tbody tr:nth-child(even) {
+  background-color: #ecf3a8; /* Slightly darker gray for even rows */
 }

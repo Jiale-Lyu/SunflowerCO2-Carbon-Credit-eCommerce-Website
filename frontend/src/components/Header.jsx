@@ -58,7 +58,7 @@ const Header = () => {
                 <Nav.Link>Learn</Nav.Link>
               </LinkContainer>
               <LinkContainer to='/award'>
-                <Nav.Link>Leadership Award</Nav.Link>
+                <Nav.Link>Leaderboard</Nav.Link>
               </LinkContainer>
               {/* only one product at the beginning */}
               <LinkContainer to='/product/669917ff27f5323535ba5430'>

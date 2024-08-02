@@ -74,7 +74,7 @@ const getCreditById = asyncHandler(async (req, res) => {
 const getCredits = asyncHandler(async (req, res) => {
   const credits = await Credit.find({ isClaimed: true }).populate(
     'user',
-    'id name email'
+    'id name displayName state email'
   );
   res.json(credits);
 });
