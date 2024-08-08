@@ -3,7 +3,7 @@ const products = [
     name: 'One Ton Carbon Credit',
     image: '/images/card.jpg',
     description:
-      'Embrace sustainability and contribute to a greener planet with the GreenGuard Carbon Offset Card. Designed with the eco-conscious individual in mind, this card represents your commitment to reducing your carbon footprint. Each card represents a tangible step towards combating climate change, by funding projects that reduce greenhouse gas emissions.',
+      'The Sunflower Card by Sunflower.com lets you offset one ton of carbon dioxide, backed by Verra-certified carbon credits. By purchasing this card, you directly support verified emission reductions. Register your card on our website to showcase your contribution on our leaderboard and inspire others. Make a real difference, one card at a time.',
     brand: 'CarbonFar',
     category: 'Card',
     price: 20.0,

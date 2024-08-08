@@ -6,61 +6,82 @@ const AboutScreen = () => {
     <div className='about-container'>
       <h1>About Us</h1>
       <br />
-      <br />
-      <br />
-      <h3>Our Commitment</h3>
+
+      <h3>Your Simple Path to Environmental Impact</h3>
       <p>
-        We believe that every action, no matter how small, can make a
-        significant difference in combating climate change. That's why we've
-        dedicated ourselves to providing accessible and effective carbon
-        offsetting solutions for everyone. Whether you're an individual looking
-        to offset your personal carbon emissions or a business striving to
-        achieve carbon neutrality, we're here to support you every step of the
-        way.
+        At Sunflower.com, we're dedicated to making it easy for you to
+        contribute to a greener planet. We've partnered with Verra, a leading
+        global carbon credit certification organization, to purchase a 1,000-ton
+        carbon credit contract.
       </p>
       <br />
-      <br />
+
+      <h3>About Verra</h3>
+      <p>
+        <a href='https://verra.org/' target='_blank' rel='noreferrer'>
+          Verra
+        </a>
+        &nbsp;is renowned for its rigorous standards and certification programs
+        that ensure the integrity of carbon credits. Their projects span across
+        the globe, focusing on reducing greenhouse gas emissions, promoting
+        sustainable development, and protecting ecosystems. When you invest in a
+        carbon credit certified by Verra, you can trust that it represents
+        genuine, high-quality emission reductions.
+      </p>
+
       <br />
 
+      <h3>Our Carbon Offset Card</h3>
+      <p>
+        Our Carbon Offset Card To simplify your involvement, we've transformed
+        this large contract into 1,000 individual Carbon Offset Cards. Each card
+        represents one ton of carbon credits from our Verra-backed contract. By
+        purchasing a Carbon Offset Card, you are directly supporting the
+        reduction of one ton of carbon emissions. Here's why our Carbon Offset
+        Cards are a meaningful and impactful choice:
+      </p>
       <Row>
         <Col md={7}>
-          <h3>Why Carbon Offset?</h3>
-          <p>
-            Carbon offsetting is a crucial strategy in the fight against climate
-            change. By investing in projects that reduce or capture greenhouse
-            gas emissions, we can offset the carbon emissions produced by our
-            daily activities, products, and services. From renewable energy
-            initiatives to reforestation projects, carbon offsetting not only
-            helps mitigate climate change but also promotes sustainable
-            development and environmental conservation worldwide.
-          </p>
-          <p>
-            Our Approach At Carbon Far, we are committed to transparency,
-            integrity, and effectiveness in everything we do. We carefully vet
-            and select carbon offset projects based on rigorous criteria,
-            ensuring that your contributions have a real and measurable impact
-            on reducing global carbon emissions. Additionally, we prioritize
-            collaboration with local communities and stakeholders to maximize
-            the social, economic, and environmental benefits of our projects.
-          </p>
+          <ol>
+            <li>
+              Direct Impact: Each Carbon Offset Card is backed by a portion of
+              our 1,000-ton contract, ensuring that your purchase has a real and
+              measurable impact on the environment.
+            </li>
+            <li>
+              Accessibility: Traditionally, carbon credits are sold in large
+              quantities, making it difficult for individuals to contribute. Our
+              cards break down this barrier, allowing you to participate in
+              carbon offsetting in a manageable way.
+            </li>
+            <li>
+              Permanent Commitment: Once we've purchased the carbon credit
+              contract, we do not sell it again. This means that your investment
+              in a Carbon Offset Card is secure and dedicated solely to
+              offsetting carbon emissions.
+            </li>
+            <li>
+              Environmental Stewardship: By choosing our Carbon Offset Card, you
+              are taking a tangible step toward mitigating climate change and
+              supporting a sustainable future.
+            </li>
+          </ol>
         </Col>
         <Col md={5}>
           <img src='../images/aboutimg.jpg' alt='env_image' />
         </Col>
       </Row>
-      <br />
-      <br />
-      <br />
-      <h3>Our Approach</h3>
       <p>
-        At Carbon Far, we are committed to transparency, integrity, and
-        effectiveness in everything we do. We carefully vet and select carbon
-        offset projects based on rigorous criteria, ensuring that your
-        contributions have a real and measurable impact on reducing global
-        carbon emissions. Additionally, we prioritize collaboration with local
-        communities and stakeholders to maximize the social, economic, and
-        environmental benefits of our projects.
+        Every card you purchase helps reduce the carbon footprint and promotes
+        cleaner air and a healthier planet. Join us in making a difference—one
+        Carbon Offset Card at a time. Visit&nbsp;
+        <a href='http://sunflower.com/' target='_blank' rel='noreferrer'>
+          Sunflower.com
+        </a>
+        &nbsp;to learn more and purchase your Carbon Offset Card today.
+        Together, we can create a brighter, greener future.
       </p>
+
       <br />
       <br />
       <br />

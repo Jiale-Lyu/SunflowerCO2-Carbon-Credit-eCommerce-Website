@@ -1,6 +1,7 @@
 import { Navbar, Nav, Container, NavDropdown, Badge } from 'react-bootstrap';
 import { FaShoppingCart, FaUser } from 'react-icons/fa';
 import { LinkContainer } from 'react-router-bootstrap';
+import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useLogoutMutation } from '../slices/usersApiSlice';
@@ -51,25 +52,25 @@ const Header = () => {
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ms-auto'>
               {/* <SearchBox /> */}
-              <LinkContainer to='/'>
-                <Nav.Link>Home</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to='/about'>
-                <Nav.Link>Learn</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to='/award'>
-                <Nav.Link>Leaderboard</Nav.Link>
-              </LinkContainer>
+              <Nav.Link as={NavLink} to='/' exact>
+                Home
+              </Nav.Link>
+              <Nav.Link as={NavLink} to='/about'>
+                Learn
+              </Nav.Link>
+              <Nav.Link as={NavLink} to='/award'>
+                Leaderboard
+              </Nav.Link>
               {/* only one product at the beginning */}
-              <LinkContainer to='/product/669917ff27f5323535ba5430'>
-                <Nav.Link>Purchase</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to='/faq'>
-                <Nav.Link>FAQs</Nav.Link>
-              </LinkContainer>
-              {/* <LinkContainer to='/news'>
-                <Nav.Link>News</Nav.Link>
-              </LinkContainer> */}
+              <Nav.Link as={NavLink} to='/product/669917ff27f5323535ba5430'>
+                Purchase
+              </Nav.Link>
+              <Nav.Link as={NavLink} to='/faq'>
+                FAQs
+              </Nav.Link>
+              {/* <Nav.Link as={NavLink} to='/news'>
+                News
+              </Nav.Link> */}
               {userInfo ? (
                 <>
                   <NavDropdown title={userInfo.name} id='username'>
@@ -82,11 +83,9 @@ const Header = () => {
                   </NavDropdown>
                 </>
               ) : (
-                <LinkContainer to='/login'>
-                  <Nav.Link>
-                    <FaUser /> Sign In
-                  </Nav.Link>
-                </LinkContainer>
+                <Nav.Link as={NavLink} to='/login'>
+                  <FaUser /> Sign In
+                </Nav.Link>
               )}
 
               {/* Admin Links */}
@@ -103,16 +102,14 @@ const Header = () => {
                   </LinkContainer>
                 </NavDropdown>
               )}
-              <LinkContainer to='/cart'>
-                <Nav.Link>
-                  <FaShoppingCart /> Cart
-                  {cartItems.length > 0 && (
-                    <Badge pill bg='success' style={{ marginLeft: '5px' }}>
-                      {cartItems.reduce((a, c) => a + c.qty, 0)}
-                    </Badge>
-                  )}
-                </Nav.Link>
-              </LinkContainer>
+              <Nav.Link as={NavLink} to='/cart'>
+                <FaShoppingCart /> Cart
+                {cartItems.length > 0 && (
+                  <Badge pill bg='success' style={{ marginLeft: '5px' }}>
+                    {cartItems.reduce((a, c) => a + c.qty, 0)}
+                  </Badge>
+                )}
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

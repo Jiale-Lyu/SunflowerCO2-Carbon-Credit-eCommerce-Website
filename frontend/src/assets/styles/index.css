@@ -159,7 +159,14 @@ footer a:hover {
 }
 
 .about-container {
-  background-color: rgba(255, 255, 255, 0.7);
+  /* background-color: rgba(212, 186, 129, 0.53); */
+  background: linear-gradient(
+    to bottom,
+    rgba(212, 186, 129, 0.53),
+    rgba(235, 214, 167, 0.53)
+  );
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
   padding: 20px;
 }
 .claim-container {
@@ -201,17 +208,31 @@ footer a:hover {
   display: flex;
 }
 .profile-body {
-  background-color: rgba(255, 255, 255, 0.7);
+  /* background-color: rgba(235, 214, 167, 0.53); */
+  backdrop-filter: blur(10px);
+  background: linear-gradient(
+    to bottom,
+    rgba(212, 186, 129, 0.53),
+    rgba(235, 214, 167, 0.53)
+  );
+  border-radius: 15px;
   padding: 20px;
 }
 
 .award-container {
   /* background-color: rgba(255, 255, 255, 0.8); */
+  background: linear-gradient(
+    to bottom,
+    rgba(212, 186, 129, 0.53),
+    rgba(235, 214, 167, 0.53)
+  );
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 5%;
+  padding-top: 5%;
 }
 
 .table-container {
