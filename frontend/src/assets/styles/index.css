@@ -276,3 +276,41 @@ footer a:hover {
 .table-wrapper table tbody tr:nth-child(even) {
   background-color: #ecf3a8; /* Slightly darker gray for even rows */
 }
+
+.about-reason {
+  text-align: center;
+  width: 90%;
+  /* background-color: #ccc; */
+
+  padding: 20px;
+  margin: 0 auto; /* Center horizontally */
+  max-width: 1200px;
+}
+.about-text {
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+}
+.about-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center vertically */
+  text-align: left; /* Align text to the left */
+}
+.about-text p {
+  /* font-size: 18px; */
+  margin-bottom: 20px;
+}
+
+.about-text p strong {
+  font-weight: bold;
+}
+.about-reason img {
+  /* width: 400px; */
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+.about-reason .row {
+  margin-bottom: 30px;
+}
