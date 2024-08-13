@@ -9,6 +9,7 @@ import Loader from '../components/Loader';
 import { useProfileMutation } from '../slices/usersApiSlice';
 import { useGetMyOrdersQuery } from '../slices/ordersApiSlice';
 import { useGetMyClaimedCreditsQuery } from '../slices/creditsApiSlice';
+import { Link } from 'react-router-dom';
 
 const states = [
   { label: 'Alabama', value: 'AL' },
@@ -335,6 +336,9 @@ const ProfileScreen = () => {
             </Form>
           </Modal.Body>
         </Modal>
+        <p className='showcase-p'>
+          Your contribution is shown in <Link to='/award'>Leaderboard</Link>
+        </p>
       </Col>
     </Row>
   );

@@ -103,6 +103,21 @@ const ProductDetailScreen = () => {
                 <ListGroup.Item>
                   Description: {product.description}
                 </ListGroup.Item>
+                <ListGroup.Item>
+                  <p>Calculate Your Carbon Footprint</p>
+                  <Button
+                    className='btn-block'
+                    type='button'
+                    onClick={() =>
+                      window.open(
+                        'https://coolclimate.org/calculator',
+                        '_blank'
+                      )
+                    }
+                  >
+                    Access Carbon Calculator
+                  </Button>
+                </ListGroup.Item>
               </ListGroup>
             </Col>
             <Col md={3}>

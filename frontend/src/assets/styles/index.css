@@ -314,3 +314,7 @@ footer a:hover {
 .about-reason .row {
   margin-bottom: 30px;
 }
+.showcase-p {
+  text-align: center;
+  margin-top: 20px; /* Adjust the spacing as needed */
+}

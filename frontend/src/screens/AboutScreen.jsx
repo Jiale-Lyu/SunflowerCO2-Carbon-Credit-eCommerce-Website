@@ -33,7 +33,7 @@ const AboutScreen = () => {
 
       <h3>Our Carbon Offset Card</h3>
       <p>
-        Our Carbon Offset Card To simplify your involvement, we've transformed
+        Our Carbon Offset Card to simplify your involvement, we've transformed
         this large contract into 1,000 individual Carbon Offset Cards. Each card
         represents one ton of carbon credits from our Verra-backed contract. By
         purchasing a Carbon Offset Card, you are directly supporting the

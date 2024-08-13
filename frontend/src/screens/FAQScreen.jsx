@@ -106,7 +106,7 @@ const FAQScreen = () => {
           </Accordion.Header>
           <Accordion.Body>
             SunflowerCO2 purchases large carbon credit contracts that are
-            varified by VERRA.
+            verified by VERRA.
           </Accordion.Body>
         </Accordion.Item>
       </Accordion>
