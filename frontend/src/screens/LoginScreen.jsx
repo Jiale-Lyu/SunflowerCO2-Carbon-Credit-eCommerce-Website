@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
-// import { Form, Button, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../components/Loader';
 import FormContainer from '../components/FormContainer';
@@ -79,9 +79,9 @@ const LoginScreen = () => {
             </div>
           </Form.Text>
         </Form.Group>
-        {/* <Form.Group className='mb-3' id='formGridCheckbox'>
+        <Form.Group className='mb-3' id='formGridCheckbox'>
           <Form.Check type='checkbox' label='Remember me' />
-        </Form.Group> */}
+        </Form.Group>
 
         <Button disabled={isLoading} type='submit' variant='primary'>
           Sign In
@@ -89,14 +89,14 @@ const LoginScreen = () => {
         {isLoading && <Loader />}
       </Form>
 
-      {/* <Row className='py-3'>
+      <Row className='py-3'>
         <Col>
           New Customer?{' '}
           <Link to={redirect ? `/register?redirect=${redirect}` : '/register'}>
             Register
           </Link>
         </Col>
-      </Row> */}
+      </Row>
     </FormContainer>
   );
 };

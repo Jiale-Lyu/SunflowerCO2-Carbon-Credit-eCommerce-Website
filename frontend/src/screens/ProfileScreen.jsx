@@ -251,7 +251,7 @@ const ProfileScreen = () => {
         <br />
 
         <h2>
-          You have Registered {totalClaimedCredits} TONS of CARBON OFFSETS in
+          You have registered {totalClaimedCredits} TONS of CARBON OFFSETS in
           total
         </h2>
 
