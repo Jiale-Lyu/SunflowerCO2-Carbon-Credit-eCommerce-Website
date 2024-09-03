@@ -20,7 +20,7 @@ const AwardScreen = () => {
 
   // Filter and sort users by claimedCredits
   const showcasingUsers = users
-    ?.filter((user) => user.showcaseCredits)
+    ?.filter((user) => user.showcaseCredits && user.claimedCredits > 0)
     .sort((a, b) => b.claimedCredits - a.claimedCredits)
     .slice(0, 10); // Limit to top 10 users
 
