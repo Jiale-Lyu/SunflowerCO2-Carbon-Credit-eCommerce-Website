@@ -30,7 +30,7 @@ const sendEmail = async (user) => {
       service: 'gmail',
       auth: {
         type: 'OAuth2',
-        user: 'jialelyu22@gmail.com',
+        user: process.env.EMAIL,
         clientId: process.env.OAUTH2_CLIENT_ID,
         clientSecret: process.env.OAUTH2_CLIENT_SECRET,
         refreshToken: process.env.OAUTH2_REFRESH_TOKEN,
@@ -40,7 +40,7 @@ const sendEmail = async (user) => {
 
     const mailOptions = {
       from: `SunflowerCO2 <${process.env.EMAIL}>`,
-      to: 'jialelyu@hotmail.com', //user.email
+      to: user.email,
       subject: 'Password Reset Request for SunflowerCO2',
       // text: message,
       html: message,
